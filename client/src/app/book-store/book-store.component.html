@@ -1,0 +1,62 @@
+<div class="container">
+    <!-- <div class="container-fluid"> -->
+    <div class="row">
+        <!-- <div class="col-9 bg-success p-2">
+            {{books.length}} Books
+        </div> -->
+
+        <!-- Authors -->
+        <div class="col-3 p-2" >
+            <button class="btn btn-block btn-outline-primary d-block" (click)='changeAuthor()'>
+                All Authors
+            </button> 
+            <button *ngFor='let author of authors'
+             class="btn btn-outline-primary btn-block d-block m-2"
+             [class.active] = 'author == selectedAuthor' (click)='changeAuthor(author)'>
+             {{ author }}
+            </button>
+        </div>
+        <!-- <div class="col-3 bg-info p-2">
+            {{authors.length}} Authors
+        </div> -->
+
+        <!-- Books -->
+        <div class="col-9 p-2">
+            <div *ngFor='let book of books' class="card m-1 p-1 bg-light" style="display: flex;">
+                <h4 style="display: flexbox;">
+                    {{ book.name }}
+                    <span class="badge badge-pill badge-primary bg-primary"
+                    style="float: right;">
+                        <!-- <span class="badge badge-pill badge-primary float-right bg-dark"> -->
+                        {{ book.price | currency: 'USD':'symbol':'2.2-2'}}
+                    </span>
+                    </h4>
+                <div class="card-text bg-white p-1">{{ book.description }}
+                    <button class="btn btn-success btn-sm" style="float: right;"
+                        (click)='addBookToCart(book)'>Add To Cart
+                    </button>
+                </div>
+            </div>
+            <div class="container" style="display: flex;">
+                <div class="form-inline float-left mr-1">
+                    <select class="form-control" [value]='booksPerPage'
+                    (change)='onChangePageSize($event)'>
+                    <!-- (change)='changePageSize($event.target.value)'> -->
+                        <option value="3">3 per Page</option>
+                        <option value="4">4 per Page</option>
+                        <option value="6">6 per Page</option>
+                        <option value="8">8 per Page</option>
+                    </select>
+                </div>
+                <div class="btn-group float-right">
+                    <button *counter='let page of pageCount' (click)='changePage(page)'
+                    class="btn btn-outline-primary"
+                    [class.active]='page == selectedPage'>
+                    {{ page }}
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
