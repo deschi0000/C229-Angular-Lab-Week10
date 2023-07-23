@@ -9,8 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from './user.model';
 
 const PROTOCOL = 'http';
-// const PORT = 3500;
-const PORT = 3000;  // This needs to match the one in server.js on the backend (the video had it set to 3500)
+const PORT = 3500;  
 
 
 @Injectable()

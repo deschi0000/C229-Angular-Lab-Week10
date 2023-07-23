@@ -4,13 +4,13 @@ import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { AuthComponent } from "./auth/auth.component";
 import { AuthGuard } from "./auth/auth.guard";
+import { AdminComponent } from "./admin.component";
 
 const routing = RouterModule.forChild([
     {path: 'auth', component: AuthComponent},
-    {path: 'main', component: AuthComponent, canActivate: [AuthGuard],
-        children: [
-            { path: '**', redirectTo: 'book-list' }
-        ]
+    {path: 'main', component: AdminComponent, canActivate: [AuthGuard],
+        // children: [
+        //     { path: '**', redirectTo: 'book-list' }]
     },
     {path: '**', redirectTo: 'auth'},
 ]);
@@ -18,6 +18,6 @@ const routing = RouterModule.forChild([
 @NgModule({
     imports: [CommonModule, FormsModule, routing],
     providers: [AuthGuard],
-    declarations: [AuthComponent]
+    declarations: [AuthComponent, AdminComponent]
 })
 export class AdminModule {}

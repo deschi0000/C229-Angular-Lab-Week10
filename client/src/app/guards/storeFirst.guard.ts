@@ -16,9 +16,11 @@ export class StoreFirstGuard
         if (this.firstNavigation)
         {
             this.firstNavigation = false;
-            if (route.component != BookStoreComponent)
+            if (route.component !== BookStoreComponent)
             {
-                this.router.navigateByUrl('/book-list');
+                console.log('->Debug-> Store First Guard');
+                this.router.navigateByUrl('/');
+                // this.router.navigateByUrl('/book-list');
                 return false;
             }
         }
