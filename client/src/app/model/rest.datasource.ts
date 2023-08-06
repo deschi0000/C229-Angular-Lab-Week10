@@ -81,6 +81,17 @@ export class RestDataSource
         return this.http.get<Order[]>(this.baseUrl + 'orders');
     }
 
+    deleteOrder(id: number): Observable<Order>
+    {
+      this.loadToken();
+      return this.http.get<Order>(`${this.baseUrl}orders/delete/${id}`, this.httpOptions);
+    }
+
+    updateOrder(order: Order): Observable<Order>
+    {
+        this.loadToken();
+        return this.http.post<Order>(`${this.baseUrl}orders/edit/${order._id}`, order, this.httpOptions);
+    }
 
     private loadToken(): void
     {

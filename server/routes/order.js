@@ -23,4 +23,10 @@ router.get('/', orderController.displayOrderList);
 // POST Route for processing the Add Order Page
 router.post('/add', orderController.processAddPage);
 
+// POST request - Update the database with data from the Edit Order Page
+router.post('/edit/:id', passport.authenticate('jwt', {session: false}),  orderController.processEditPage);
+
+// Get Request - perform the delete Order Action
+router.get('/delete/:id', passport.authenticate('jwt', {session: false}),  orderController.performDelete);
+
 module.exports = router;

@@ -13,7 +13,7 @@ export class Order
     public province: string;
     public postalCode: string;
     public country: string;
-    public shipped: false;
+    public shipped = false;
 
     constructor(public cart: Cart) {}
 
