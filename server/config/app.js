@@ -99,6 +99,11 @@ app.use('/users', usersRouter);
 app.use('/book-list', booksRouter);
 app.use('/orders', ordersRouter);
 
+// app.use('/api', indexRouter);
+// app.use('/api/users', usersRouter);
+// app.use('/api/book-list', booksRouter);
+// app.use('/api/orders', ordersRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

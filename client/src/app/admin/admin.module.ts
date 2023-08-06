@@ -8,7 +8,7 @@ import { AdminComponent } from "./admin.component";
 
 const routing = RouterModule.forChild([
     {path: 'auth', component: AuthComponent},
-    {path: 'main', component: AdminComponent, canActivate: [AuthGuard],
+    {path: 'main', component: AdminComponent, canActivate: [AuthGuard]
         // children: [
         //     { path: '**', redirectTo: 'book-list' }]
     },

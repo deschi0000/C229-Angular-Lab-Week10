@@ -80,8 +80,7 @@ module.exports.processLoginPage = (req, res, next) => {
             const authToken = jwt.sign(payload, DB.Secret, {
                 expiresIn: 604800 // 1 week
             });
-
-            //TODO - Getting Ready to convert to API
+            
             return res.json({success: true, msg: 'User Logged in Successfully!', user: {
                 id: user._id,
                 displayName: user.displayName,
@@ -89,11 +88,11 @@ module.exports.processLoginPage = (req, res, next) => {
                 email: user.email
             }, token: authToken});
 
-
             //return res.redirect('/book-list');
         });
     })(req, res, next);
 }
+
 
 module.exports.displayRegisterPage = (req, res, next) => {
     // check if the user is not already logged in
