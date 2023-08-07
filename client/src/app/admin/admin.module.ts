@@ -13,6 +13,9 @@ const routing = RouterModule.forChild([
     {path: 'auth', component: AuthComponent},
     {path: 'main', component: AdminComponent, canActivate: [AuthGuard],
         children: [
+            { path: 'books/:mode/:id', component: BookEditorComponent, data: {title: 'Edit Book'}, canActivate: [AuthGuard]},
+            { path: 'books/:mode', component: BookEditorComponent, data: {title: 'Add Book'}, canActivate: [AuthGuard]},
+            { path: 'books', component: BookTableComponent, data: {title: 'Book Table'}, canActivate: [AuthGuard]},
             { path: 'orders', component: OrderTableComponent, data: {title: 'Order Table'}, canActivate: [AuthGuard]},
             { path: '**', redirectTo: 'book-list' }]
     },

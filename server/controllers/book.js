@@ -85,7 +85,7 @@ module.exports.performDelete = async (req, res, next) => {
     let id = req.params.id;
 
     try {
-        await Book.findByIdAndRemove(id);
+        await Book.deleteOne(id);
         // res.redirect('/book-list');
         res.json({success:true, msg:'Successfully Deleted Book'});
     } catch(err) {

@@ -75,6 +75,27 @@ export class RestDataSource
         return !this.jwtService.isTokenExpired(this.authToken);
     }
 
+    addBook(book: Book): Observable<Book>
+    {
+        this.loadToken();
+        return this.http.post<Book>(this.baseUrl + 'book-list/add', book, this.httpOptions);
+    }
+
+    updateBook(book: Book): Observable<Book>
+    {
+        this.loadToken();
+        return this.http.post<Book>(`${this.baseUrl}book-list/edit/${book._id}`, book, this.httpOptions);
+    }
+
+    deleteBook(id: number): Observable<Book>
+    {
+        this.loadToken();
+
+        console.log(id);
+
+        return this.http.get<Book>(`${this.baseUrl}book-list/delete/${id}`, this.httpOptions);
+    }
+
     getOrders(): Observable<Order[]>
     {
         this.loadToken();

@@ -37,4 +37,27 @@ export class BookRepository
     {
         return this.authors;
     }
+
+    saveBook(savedBook: Book): void
+    {
+        if (savedBook._id === null || savedBook._id === 0 || savedBook._id === undefined)
+        {
+            this.dataSource.addBook(savedBook).subscribe(b => {
+                this.books.push(savedBook);
+            });
+        }
+        else {
+            this.dataSource.updateBook(savedBook).subscribe(book => {
+                this.books.splice(this.books.findIndex(b => b._id === savedBook._id), 1, savedBook);
+            })
+        }
+    }
+
+    deleteBook(deletedBookID: number): void
+    {
+        this.dataSource.deleteBook(deletedBookID).subscribe(book => {
+            this.books.splice(this.books.findIndex(b => b._id === deletedBookID), 1);
+        })
+    }
+     
 }
